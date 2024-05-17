@@ -1,0 +1,22 @@
+.figure {
+	position: relative;
+	border-radius: 8px;
+	overflow: hidden;
+	min-height: 100px;
+	aspect-ratio: 16/9;
+	width: 100%;
+}
+
+.figure:hover {
+	cursor: pointer;
+}
+
+.figure:hover .caption {
+	transform: translateY(0);
+	opacity: 100%;
+}
+
+.caption {
+	transform: translateY(50%);
+	transition: all cubic-bezier(0.4, 0, 0.2, 1) 150ms;
+}
