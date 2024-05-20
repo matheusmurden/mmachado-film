@@ -1,22 +1,22 @@
-.figure {
-	position: relative;
-	border-radius: 8px;
-	overflow: hidden;
-	min-height: 100px;
-	aspect-ratio: 16/9;
-	width: 100%;
-}
-
-.figure:hover {
-	cursor: pointer;
-}
-
-.figure:hover .caption {
-	transform: translateY(0);
-	opacity: 100%;
+.captionContainer {
+	transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 250ms;
 }
 
 .caption {
-	transform: translateY(50%);
-	transition: all cubic-bezier(0.4, 0, 0.2, 1) 150ms;
+	transform: translateY(100%);
+	transition: all cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+	transition-delay: 0ms;
+}
+
+.figure:hover .captionContainer {
+	opacity: 100%;
+}
+
+.figure:hover .caption {
+	opacity: 100%;
+	transform: translateY(0);
+}
+
+.figure:hover .caption.delay {
+	transition-delay: 100ms;
 }

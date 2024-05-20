@@ -1,24 +1,20 @@
-'use client'
-
 import { useRef } from "react";
 import styles from './VideoItem.module.css';
 
-interface VideoItemProps {
-	videoUrl: string,
-	title: string,
-	subtitle: string,
-	onClick?: () => void,
-	className?: string
+export interface VideoItemProps {
+	videoUrl: string;
+	title: string;
+	subtitle: string;
+	className?: string;
 }
 
-export const VideoItem = ({ videoUrl, title, subtitle, onClick, className }: VideoItemProps) => {
+export const VideoItem = ({ videoUrl, title, subtitle, className }: VideoItemProps) => {
 	const ref = useRef<HTMLVideoElement>(null)
 	return (
 		<figure
-			onClick={onClick}
 			onMouseLeave={() => ref.current && ref.current.pause()}
 			onMouseOver={() => ref.current && ref.current.play() }
-			className={`${styles.figure} shadow-lg hover:shadow-2xl transition ease-in-out border border-[0.5px] border-black w-full ${className}`}
+			className={`${styles.figure} relative overflow-hidden min-h-[100px] aspect-video rounded-lg hover:cursor-pointer shadow-lg hover:shadow-2xl transition ease-in-out border border-[0.5px] border-black w-full ${className}`}
 			>
 			<video
 				ref={ref}
@@ -32,7 +28,8 @@ export const VideoItem = ({ videoUrl, title, subtitle, onClick, className }: Vid
 				Your browser does not support the video tag.
 			</video>
 			<figcaption className={`
-					${styles.caption}
+					${styles.captionContainer}
+					opacity-0
 					absolute
 					left-0
 					top-0
@@ -42,12 +39,17 @@ export const VideoItem = ({ videoUrl, title, subtitle, onClick, className }: Vid
 					flex
 					flex-col
 					bg-gradient-to-t
-					from-[#00000070]
-					via-[#00000050]
+					from-[#00000075]
+					via-[#00000020]
 					to-transparent
+					justify-end
 				`}>
-				<h3 className="mt-[auto] text-2xl text-white font-bold">{title}</h3>
-				<h4 className="text-xl text-white italic font-light">{subtitle}</h4>
+				<div className="overflow-hidden flex flex-row justify-start items-center">
+					<h3 className={`${styles.caption} mt-[auto] text-xl text-white font-bold`}>{title}</h3>
+				</div>
+				<div className="overflow-hidden flex flex-row justify-start items-center">
+					<h4 className={`${styles.caption} ${styles.delay} text-lg text-white italic font-light`}>{subtitle}</h4>
+				</div>
 			</figcaption>
 		</figure>
 	);

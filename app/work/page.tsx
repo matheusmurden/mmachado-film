@@ -37,7 +37,7 @@ export default function Home() {
   ];
   return (
     <main className="min-h-screen xl:container p-20 xl:p-0 mx-auto">
-      <Grid variant="A" items={items} />
+      <Grid variant="B" items={items} />
     </main>
   );
 }

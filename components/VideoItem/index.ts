@@ -1,1 +1,1 @@
-export { VideoItem } from './VideoItem';
+export * from './VideoItem';
