@@ -8,14 +8,29 @@ import contentfulLoader from "@/utils/ContentfulImageLoader";
 
 export interface VideoItemProps {
 	priority?: boolean;
-	thumbnailUrl: string;
+	thumbnail: {
+		fields: {
+			file: {
+				url: string,
+				details: {
+					size: number,
+					image: {
+						width: number,
+						height: number
+					}
+				},
+				fileName: string;
+				contentType: string;
+			}
+		}
+	};
 	videoUrl: string;
 	title: string;
 	subtitle: string;
 	className?: string;
 }
 
-export const VideoItem = ({ priority = false, thumbnailUrl, videoUrl, title, subtitle, className }: VideoItemProps) => {
+export const VideoItem = ({ priority = false, thumbnail, videoUrl, title, subtitle, className }: VideoItemProps) => {
 	const ref = useRef<HTMLVideoElement>(null)
 	return (
 		<figure
@@ -27,10 +42,9 @@ export const VideoItem = ({ priority = false, thumbnailUrl, videoUrl, title, sub
 			<Image
 				loader={(props) => contentfulLoader(props)}
 				className={`${styles.thumbnail} absolute aspect-video top-0 left-0`}
-				src={thumbnailUrl}
-				quality={100}
-				width={1280}
-				height={640}
+				src={thumbnail.fields.file.url}
+				width={thumbnail.fields.file.details.image.width}
+				height={thumbnail.fields.file.details.image.height}
 				alt={`"${title} ${subtitle}" video thumbnail.`}
 				priority={priority}
 			/>
