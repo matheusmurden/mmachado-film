@@ -11,6 +11,7 @@ export const Footer = ({ className }: FooterProps) => {
 			<Image
 				src={footerTextureImage}
 				alt="horizontal image texture"
+				className='touch-none select-none pointer-events-none'
 			/>
 		</footer>
 	);

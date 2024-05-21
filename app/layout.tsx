@@ -1,13 +1,27 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Navbar } from "@/components";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "MMachado Film"
 };
+
+const rocGrotesk = localFont({
+  src: [
+    {
+      path: '../public/RocGroteskRegular.woff2',
+      weight: '400',
+      style: 'normal'
+    },
+    {
+      path: '../public/RocGroteskBold.woff2',
+      weight: '700',
+      style: 'normal'
+    },
+  ],
+  display: 'swap'
+});
 
 export default function RootLayout({
   children,
@@ -16,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} h-full min-h-screen`}>
+      <body className={`${rocGrotesk.className} h-full min-h-screen`}>
         <Navbar />
         {children}
       </body>

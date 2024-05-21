@@ -67,10 +67,10 @@ export const VideoItem = ({ priority = false, thumbnailUrl, videoUrl, title, sub
 				id={`${title}-${subtitle}`}
 				>
 				<div className="overflow-hidden flex flex-row justify-start items-center">
-					<span className={`${styles.caption} mt-[auto] text-xl text-white font-bold`}>{title}</span>
+					<span className={`${styles.caption} mt-[auto] text-xl text-white font-bold uppercase`}>{title}</span>
 				</div>
 				<div className="overflow-hidden flex flex-row justify-start items-center">
-					<span className={`${styles.caption} ${styles.delay} text-lg text-white italic font-light`}>{subtitle}</span>
+					<span className={`${styles.caption} ${styles.delay} text-lg text-white font-regular`}>{subtitle}</span>
 				</div>
 			</figcaption>
 		</figure>
