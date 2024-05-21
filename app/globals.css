@@ -6,4 +6,7 @@
   .text-balance {
     text-wrap: balance;
   }
+  body {
+    background-color: #000000;
+  }
 }
