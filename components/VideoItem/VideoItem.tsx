@@ -8,6 +8,7 @@ import contentfulLoader from "@/utils/ContentfulImageLoader";
 
 export interface VideoItemProps {
 	priority?: boolean;
+	variant?: 'HOME' | 'WORK';
 	thumbnail: {
 		fields: {
 			file: {
@@ -30,18 +31,18 @@ export interface VideoItemProps {
 	className?: string;
 }
 
-export const VideoItem = ({ priority = false, thumbnail, videoUrl, title, subtitle, className }: VideoItemProps) => {
+export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, videoUrl, title, subtitle, className }: VideoItemProps) => {
 	const ref = useRef<HTMLVideoElement>(null)
 	return (
 		<figure
 			onMouseLeave={() => ref.current && ref.current.pause()}
 			onMouseOver={() => ref.current && ref.current.play() }
-			className={`${styles.figure} relative mb-20 md:mb-0 overflow-hidden h-full aspect-video rounded-lg hover:cursor-pointer shadow-lg hover:shadow-2xl transition ease-in-out border border-[0.5px] border-black w-full ${className}`}
+			className={`${styles.figure} ${variant === 'HOME' ? '' : styles.work} relative mt-4 md:mt-0 h-full rounded-lg hover:cursor-pointer shadow-lg hover:shadow-2xl transition ease-in-out w-full ${className}`}
 			aria-describedby={`${title}-${subtitle}`}
 		>
 			<Image
 				loader={(props) => contentfulLoader(props)}
-				className={`${styles.thumbnail} absolute aspect-video top-0 left-0`}
+				className={`${styles.thumbnail} ${styles.videoOutline} absolute rounded-lg aspect-video top-0 left-0`}
 				src={thumbnail.fields.file.url}
 				width={thumbnail.fields.file.details.image.width}
 				height={thumbnail.fields.file.details.image.height}
@@ -76,15 +77,15 @@ export const VideoItem = ({ priority = false, thumbnail, videoUrl, title, subtit
 					from-[#00000075]
 					via-[#00000020]
 					to-transparent
-					justify-end
+					justify-end 
 				`}
 				id={`${title}-${subtitle}`}
 				>
 				<div className="overflow-hidden flex flex-row justify-start items-center">
-					<span className={`${styles.caption} mt-[auto] text-xl text-white font-bold uppercase`}>{title}</span>
+					<span className={`${styles.caption} mt-[auto] text-xl ${variant === 'HOME' ? 'md:text-3xl' : 'md:text-lg'} text-white font-bold uppercase`}>{title}</span>
 				</div>
 				<div className="overflow-hidden flex flex-row justify-start items-center">
-					<span className={`${styles.caption} ${styles.delay} text-lg text-white font-regular`}>{subtitle}</span>
+					<span className={`${styles.caption} ${styles.delay} text-lg ${variant === 'HOME' ? 'md:text-2xl text-zinc-400 lg:text-white' : 'md:text-base text-zinc-400'} font-regular`}>{subtitle}</span>
 				</div>
 			</figcaption>
 		</figure>

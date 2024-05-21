@@ -7,11 +7,12 @@ interface FooterProps {
 
 export const Footer = ({ className }: FooterProps) => {
 	return (
-		<footer className={`mt-48 w-[90%] mx-[auto] ${className}`}>
+		<footer className={`mt-12 md:mt-48 ml-[-10%] md:ml-[auto] w-[120%] md:w-[100%] xl:w-[80%] mx-[auto] ${className}`}>
 			<Image
 				src={footerTextureImage}
 				alt="horizontal image texture"
 				className='touch-none select-none pointer-events-none'
+				priority
 			/>
 		</footer>
 	);

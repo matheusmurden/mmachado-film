@@ -10,7 +10,7 @@ export default async function Home() {
     subtitle: item.fields.project
   }))
   return (
-    <main className="min-h-screen xl:container p-6 pb-0 xl:p-0 mx-auto">
+    <main className="min-h-screen xl:container p-6 pb-0 xl:px-3 mx-auto">
       <Header />
         <Grid variant="HOME" items={items} />
       <Footer />
