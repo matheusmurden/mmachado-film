@@ -1,12 +1,14 @@
 "use client"
 
 import sideTexture from '/public/sideTexture.jpg';
+import profilePic from '/public/profilePic.jpg';
 import Image from 'next/image';
 
 export default function Hello() {
   return (
-    <main className="min-h-screen m-0 xl:w-screen xl:max-w-[100vw] p-6 pb-0 md:pl-0 md:pt-0 xl:p-0 mx-auto flex flex-row gap-16 items-center">
-      <aside className='hidden md:block max-w-[180px]'>
+    <>
+    <main className="min-h-[80vh] m-0 xl:w-screen xl:max-w-[100vw] p-6 pb-0 lg:pl-0 lg:pt-0 lg:pr-[15rem] mx-auto flex flex-col-reverse md:flex-row gap-16 items-center justify-center lg:justify-between">
+      <aside className='hidden lg:block w-[20vw]'>
         <Image
           src={sideTexture}
           width={238}
@@ -15,7 +17,19 @@ export default function Hello() {
           className='h-full touch-none select-none pointer-events-none'
         />
       </aside>
-      <h1 className="text-balance text-white text-3xl uppercase">Maria is a Brazilian based film editor, <br className="hidden md:block" />she works with commercials, films, <br className="hidden md:block"  />and music videos.</h1>
+      <h1 className="w-full lg:w-[55vw] text-balance text-white text-2xl uppercase">Maria is a Brazilian based film editor, <br className="hidden lg:block" />she works with commercials, films, <br className="hidden lg:block"  />and music videos.</h1>
+      <Image
+        src={profilePic}
+        width={334}
+        height={434}
+        alt="A picture of Maria Machado."
+        className='h-full touch-none select-none pointer-events-none w-[75%] lg:w-[25vw]'
+      />
     </main>
+    <div className='lg:translate-y-[-5rem] ml-[auto] mr-24   px-10 lg:px-0 w-full lg:w-[20rem] text-white grid grid-rows-2 grid-cols-2 font-bold'>
+      <a className='col-start-2 row-start-1 text-[#C772FF] text-xl hover:text-white uppercase text-right' href="https://www.instagram.com/marialuisamlm/" target='_blank' rel="noopener">instagram</a>
+      <a className='col-start-1 row-start-2 text-[#FE4E02] text-xl hover:text-white uppercase' href="mailto:matheus@murden.dev">email@domain.com</a>
+    </div>
+    </>
   );
 }
