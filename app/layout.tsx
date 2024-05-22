@@ -3,6 +3,7 @@ import "./globals.css";
 import { Lightbox, Navbar } from "@/components";
 import Script from "next/script";
 import type { Viewport } from 'next'
+import { Suspense } from "react";
 
 const rocGrotesk = localFont({
   src: [
@@ -61,7 +62,9 @@ export default function RootLayout({
         <body className={`${rocGrotesk.className} h-full min-h-screen`}>
           <Navbar />
           {children}
-          <Lightbox />
+          <Suspense>
+            <Lightbox />
+          </Suspense>
         </body>
     </html>
   );
