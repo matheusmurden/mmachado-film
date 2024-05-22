@@ -90,7 +90,7 @@ export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, video
 						<span className={`${styles.caption} mt-[auto] text-xl ${variant === 'HOME' ? 'md:text-3xl' : 'md:text-lg'} text-white font-bold uppercase`}>{title}</span>
 					</div>
 					<div className="overflow-hidden flex flex-row justify-start items-center">
-						<span className={`${styles.caption} ${styles.delay} text-lg ${variant === 'HOME' ? 'md:text-2xl text-zinc-400 lg:text-white' : 'md:text-base text-zinc-400'} font-regular`}>{subtitle}</span>
+						<span className={`${styles.caption} ${styles.delay} text-lg ${variant === 'HOME' ? 'md:text-2xl text-zinc-400 lg:text-white' : 'md:text-base text-zinc-400'} font-regular uppercase`}>{subtitle}</span>
 					</div>
 				</figcaption>
 			</figure>
