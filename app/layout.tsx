@@ -1,11 +1,8 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Navbar } from "@/components";
-
-export const metadata: Metadata = {
-  title: "MMachado Film"
-};
+import { Lightbox, Navbar } from "@/components";
+import Script from "next/script";
+import { useState } from "react";
 
 const rocGrotesk = localFont({
   src: [
@@ -30,10 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${rocGrotesk.className} h-full min-h-screen`}>
-        <Navbar />
-        {children}
-      </body>
+      <Script src="https://player.vimeo.com/api/player.js" />
+        <body className={`${rocGrotesk.className} h-full min-h-screen`}>
+          <Navbar />
+          {children}
+        </body>
+        <Lightbox />
     </html>
   );
 }

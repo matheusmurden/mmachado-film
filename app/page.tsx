@@ -7,7 +7,8 @@ export default async function Home() {
     thumbnail: item.fields.thumbnail,
     videoUrl: item.fields.mp4.fields.file.url,
     title: item.fields.brand,
-    subtitle: item.fields.project
+    subtitle: item.fields.project,
+    vimeo: item.fields.vimeo
   }))
   return (
     <main className="min-h-screen xl:container p-6 pb-0 xl:px-4 mx-auto">

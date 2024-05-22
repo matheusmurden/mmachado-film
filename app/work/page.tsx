@@ -8,7 +8,8 @@ export default async function Work() {
     thumbnail: item.fields.thumbnail,
     videoUrl: item.fields.mp4.fields.file.url,
     title: item.fields.brand,
-    subtitle: item.fields.project
+    subtitle: item.fields.project,
+    vimeo: item.fields.vimeo
   }))
 
   return (
