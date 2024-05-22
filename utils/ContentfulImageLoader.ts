@@ -1,5 +1,3 @@
-"use client"
-
 interface LoaderProps {
 	src: string;
 	width: number;

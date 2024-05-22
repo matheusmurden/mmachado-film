@@ -1,6 +1,6 @@
 import { Grid, Header } from "@/components";
 
-import { getVideos, getWorkData } from '@/utils'
+import { getWorkData } from '@/utils'
 
 export async function generateMetadata() {
   const data = await getWorkData();
