@@ -1,5 +1,5 @@
 import { Grid, Footer, Header } from "@/components";
-import { getVideos, getHomepageData } from "@/utils";
+import { getHomepageData } from "@/utils";
 
 export async function generateMetadata() {
   const data = await getHomepageData();
@@ -36,7 +36,10 @@ export default async function Home() {
   }))
   return (
     <main className="min-h-screen xl:container p-6 pb-0 xl:px-4 mx-auto">
-      <Header />
+      <Header>
+        <h1 className="text-7xl md:text-8xl mb-4 font-bold">Maria <br />MM ch d</h1>
+        <h2 className="text-3xl font-regular">Film Editor</h2>
+      </Header>
         <Grid variant="HOME" items={videos} />
       <Footer />
     </main>

@@ -47,7 +47,7 @@ export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, video
 			>
 				<Image
 					loader={(props) => contentfulLoader(props)}
-					className={`${styles.thumbnail} ${styles.videoOutline} absolute rounded-lg aspect-video top-0 left-0`}
+					className={`${styles.thumbnail} ${styles.videoOutline} absolute rounded-lg aspect-video top-0 left-0 object-cover`}
 					src={thumbnail.fields.file.url}
 					width={thumbnail.fields.file.details.image.width}
 					height={thumbnail.fields.file.details.image.height}
