@@ -2,7 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Lightbox, Navbar } from "@/components";
 import Script from "next/script";
-import { useState } from "react";
+import { Suspense } from "react";
 
 const rocGrotesk = localFont({
   src: [
@@ -32,7 +32,9 @@ export default function RootLayout({
           <Navbar />
           {children}
         </body>
-        <Lightbox />
+        <Suspense>
+          <Lightbox />
+        </Suspense>
     </html>
   );
 }
