@@ -1,5 +1,6 @@
 import { Grid, Footer, Header } from "@/components";
 import { getHomepageData } from "@/utils";
+import { Suspense } from "react";
 
 export async function generateMetadata() {
   const data = await getHomepageData();
@@ -43,7 +44,9 @@ export default async function Home() {
         <h1 className="text-7xl md:text-8xl mb-4 font-bold">Maria <br />MM ch d</h1>
         <h2 className="text-3xl font-regular">Film Editor</h2>
       </Header>
+      <Suspense>
         <Grid variant="HOME" items={videos} />
+      </Suspense>
       <Footer />
     </main>
   );
