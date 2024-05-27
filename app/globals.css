@@ -9,4 +9,7 @@
   body {
     background-color: #000000;
   }
+  body, html, .player, .fallback {
+    background: black !important;
+  }
 }

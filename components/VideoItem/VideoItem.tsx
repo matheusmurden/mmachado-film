@@ -26,20 +26,38 @@ export interface VideoItemProps {
 			}
 		}
 	};
-	videoUrl: string;
+	video: {
+		aspectRatio?: string,
+		fields: {
+			file: {
+				url: string,
+				details: {
+					size: number,
+					video: {
+						width: number,
+						height: number
+					}
+				},
+				fileName: string;
+				contentType: string;
+			}
+		}
+	};
 	title: string;
 	subtitle: string;
 	className?: string;
 	vimeo?: string;
+	category?: string;
 }
 
-export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, videoUrl, title, subtitle, className, vimeo }: VideoItemProps) => {
+export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, video, title, subtitle, className, vimeo }: VideoItemProps) => {
 	const ref = useRef<HTMLVideoElement>(null)
+	const url = video.aspectRatio ? `?modal=true&vimeoUrl=${vimeo}&aspectRatio=${video.aspectRatio}` : `?modal=true&vimeoUrl=${vimeo}`
 	return (
 		<Link
+		scroll={false}
 		className={`${styles.figure} ${variant === 'HOME' ? '' : styles.work} relative mt-4 md:mt-0 h-full rounded-lg hover:cursor-pointer shadow-lg hover:shadow-2xl transition ease-in-out w-full ${className}`}
-
-		href={`?modal=true&vimeoUrl=${vimeo}`}>
+		href={url}>
 			<figure
 				onMouseLeave={() => ref.current && ref.current.pause()}
 				onMouseOver={() => ref.current && ref.current.play() }
@@ -61,8 +79,11 @@ export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, video
 					muted
 					playsInline
 					className="rounded-lg aspect-video w-full overflow-hidden object-cover"
+					poster={`https:${thumbnail.fields.file.url}`}
+					src={`https:${video.fields.file.url}`}
+					disablePictureInPicture
+					disableRemotePlayback
 				>
-					<source src={videoUrl} type="video/mp4" />
 					Your browser does not support the video tag.
 				</video>
 				<figcaption

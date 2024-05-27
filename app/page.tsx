@@ -29,7 +29,10 @@ export default async function Home() {
   const data = await getHomepageData();
   const videos = (data.fields.videos as any[] || [])?.map((item: any) => ({
     thumbnail: item.fields.thumbnail,
-    videoUrl: item.fields.mp4.fields.file.url,
+  video: {
+    ...item.fields.mp4,
+    aspectRatio: item.fields.aspectRatio
+  },
     title: item.fields.brand,
     subtitle: item.fields.project,
     vimeo: item.fields.vimeo

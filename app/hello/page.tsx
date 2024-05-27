@@ -29,6 +29,9 @@ export async function generateMetadata() {
 
 export default async function Hello() {
   const data = await getHelloData();
+
+  const emailArr = (data.fields.email as string).split('@');
+
   return (
     <>
     <main className="min-h-[80vh] m-0 xl:w-screen xl:max-w-[100vw] p-6 pb-0 lg:pl-0 lg:pt-0 lg:pr-[15rem] mx-auto flex flex-col-reverse md:flex-row gap-16 items-center justify-end lg:justify-between">
@@ -52,7 +55,11 @@ export default async function Hello() {
     </main>
     <div className='translate-y-[-2rem] lg:translate-y-[-5rem] ml-[auto] mr-24 px-10 lg:px-0 w-full lg:w-[20rem] text-white grid grid-rows-2 grid-cols-2 font-bold'>
       <a className='col-start-2 row-start-1 text-[#C772FF] text-xl hover:text-white uppercase text-right' href={data.fields.instagram as string} target='_blank' rel="noopener">instagram</a>
-      <a className='col-start-1 row-start-2 text-[#FE4E02] text-xl hover:text-white uppercase' href={`mailto:${data.fields.email}`}>{data.fields.email as string}</a>
+      <a className='col-start-1 row-start-2 text-[#FE4E02] text-xl hover:text-white uppercase' href={`mailto:${data.fields.email}`}>
+      {emailArr?.[0]}
+      <span className='font-sans'>@</span>
+      {emailArr?.[1]}
+      </a>
     </div>
     </>
   );

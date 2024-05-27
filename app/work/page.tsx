@@ -1,6 +1,8 @@
 import { Grid, Header } from "@/components";
 
 import { getWorkData } from '@/utils'
+import uniq from "lodash/uniq";
+import Link from "next/link";
 
 export async function generateMetadata() {
   const data = await getWorkData();
@@ -28,18 +30,26 @@ export async function generateMetadata() {
 
 export default async function Work() {
   const data = await getWorkData();
-  const videos = (data.fields.videos as any[] || [])?.map((item: any) => ({
+  const videos = (data.fields.videos as any[])?.map((item: any) => ({
     thumbnail: item.fields.thumbnail,
-    videoUrl: item.fields.mp4.fields.file.url,
+    video: {
+      ...item.fields.mp4,
+      aspectRatio: item.fields.aspectRatio
+    },
     title: item.fields.brand,
     subtitle: item.fields.project,
-    vimeo: item.fields.vimeo
+    vimeo: item.fields.vimeo,
+    category: item.fields.category
   }))
+
+  const categories = uniq(videos.map((item) => item.category))
 
   return (
     <main className="xl:container p-6 pb-0 xl:px-4 xl:py-0 mx-auto">
       <Header variant="WORK">
-        <h1 className="leading-tight text-[6rem] md:text-8xl lg:text-[10rem] mb-0 font-bold">{data.fields.heading as string}</h1>
+        {categories.map((category) => (
+          <Link className="leading-tight text-[6rem] md:text-8xl lg:text-2xl mb-0 font-bold" href={`?category=${category.replaceAll(' ', '-')?.toLowerCase()}`} key={category}>{category}</Link>
+        ))}
       </Header>
       <Grid variant="WORK" items={videos} />
     </main>

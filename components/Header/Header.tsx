@@ -11,7 +11,7 @@ export const Header = ({ variant = 'HOME', children }: HeaderProps) => {
 			{children}
 		</header>
 	) : (
-		<header className="h-[25vh] xl:h-[40vh] mb-0 text-white uppercase text-center flex flex-col items-start justify-end">
+		<header className="h-[25vh] xl:h-[40vh] mb-0 pb-14 text-white uppercase text-center flex flex-row gap-8 items-end justify-start">
 			{children}
 		</header>
 	);
