@@ -49,7 +49,7 @@ export default async function Work() {
     <main className="xl:container p-6 pb-0 xl:px-4 xl:py-0 mx-auto">
       <Header variant="WORK">
         {categories.map((category) => (
-          <Link className="leading-tight text-[6rem] md:text-8xl lg:text-2xl mb-0 font-bold" href={`?category=${category.replaceAll(' ', '-')?.toLowerCase()}`} key={category}>{category}</Link>
+          <Link className="leading-tight text-xl md:text-3xl lg:text-3xl mb-0 font-bold" href={`?category=${category.replaceAll(' ', '-')?.toLowerCase()}`} key={category}>{category}</Link>
         ))}
       </Header>
       <Suspense>

@@ -1,9 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
+
+import LogoSmall from '../../public/LogoSmall.png';
 
 export const Navbar = () => {
 	return (
 		<nav className="bg-black uppercase font-bold z-[998] sticky top-0 w-full h-20 justify-between items-center flex flex-row p-10 px-6 xl:px-4">
-			<Link className="text-2xl text-white leading-7" href="/">Maria <br />Mm ch d</Link>
+			<Link className="text-2xl text-white leading-7" href="/">
+				<Image src={LogoSmall} alt="Maria Machado Film Editor" className="w-36 touch-none select-none pointer-events-none" />
+			</Link>
 			<div className="flex flex-row justify-end items-center gap-8">
 				<Link className="text-[#FE4E02] text-lg hover:text-white" href="/work">work</Link>
 				<Link className="text-[#C772FF] text-lg hover:text-white" href="/hello">hello</Link>

@@ -2,6 +2,11 @@ import { Grid, Footer, Header } from "@/components";
 import { getHomepageData } from "@/utils";
 import { Suspense } from "react";
 
+import LogoBig from '../public/LogoBig.png';
+import Image from "next/image";
+
+import styles from './page.module.css';
+
 export async function generateMetadata() {
   const data = await getHomepageData();
   return {
@@ -41,8 +46,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen xl:container p-6 pb-0 xl:px-4 mx-auto">
       <Header>
-        <h1 className="text-7xl md:text-8xl mb-4 font-bold">Maria <br />MM ch d</h1>
-        <h2 className="text-3xl font-regular">Film Editor</h2>
+        <Image src={LogoBig} alt="Maria Machado Film Editor" className={`${styles.logo} w-72 lg:w-96 touch-none select-none pointer-events-none`} />
       </Header>
       <Suspense>
         <Grid variant="HOME" items={videos} />
