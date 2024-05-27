@@ -3,6 +3,7 @@ import { Grid, Header } from "@/components";
 import { getWorkData } from '@/utils'
 import uniq from "lodash/uniq";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export async function generateMetadata() {
   const data = await getWorkData();
@@ -51,7 +52,9 @@ export default async function Work() {
           <Link className="leading-tight text-[6rem] md:text-8xl lg:text-2xl mb-0 font-bold" href={`?category=${category.replaceAll(' ', '-')?.toLowerCase()}`} key={category}>{category}</Link>
         ))}
       </Header>
-      <Grid variant="WORK" items={videos} />
+      <Suspense>
+        <Grid variant="WORK" items={videos} />
+      </Suspense>
     </main>
   );
 }

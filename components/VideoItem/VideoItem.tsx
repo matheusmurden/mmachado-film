@@ -78,7 +78,7 @@ export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, video
 					loop
 					muted
 					playsInline
-					className="rounded-lg aspect-video w-full overflow-hidden object-cover"
+					className={`rounded-lg aspect-video w-full overflow-hidden object-cover ${styles.videoOutline}`}
 					poster={`https:${thumbnail.fields.file.url}`}
 					src={`https:${video.fields.file.url}`}
 					disablePictureInPicture
