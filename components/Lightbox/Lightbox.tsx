@@ -17,7 +17,7 @@ export const Lightbox = () => {
 	return modal && vimeoId ? 
 		<dialog onClick={() => router.back()} className="fixed z-[999] min-h-screen top-0 left-0 bg-[#00000095] flex flex-row items-center p-0 md:px-10 md:py-0 w-full">
 			<div onClick={() => router.back()} className={`${aspectClass} ${styles.lightbox} border-none relative max-h-screen h-full overflow-hidden w-full`}>
-				<iframe className={styles.iframe} src={`https://player.vimeo.com/video/${vimeoId}?autoplay=1&byline=0&portrait=0?transparent=1`} style={{position:"absolute", border: 'none', top:0, left:0, width:'100%', height:'100%' }} frameBorder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+				<iframe className={styles.iframe} src={`https://player.vimeo.com/video/${vimeoId}?autoplay=1&byline=0&portrait=0?transparent=1&playsinline=0`} style={{position:"absolute", border: 'none', top:0, left:0, width:'100%', height:'100%' }} frameBorder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
 			</div>
 		</dialog> : null;
 };
