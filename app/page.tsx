@@ -9,30 +9,30 @@ import styles from './page.module.css';
 export async function generateMetadata() {
   const data = await getHomepageData();
   return {
-    title: (data?.fields?.meta as { [key: string]: any })?.fields?.title as string,
-    description: (data?.fields?.meta as { [key: string]: any })?.fields?.description as string,
+    title: data?.fields?.meta?.fields?.title,
+    description: data?.fields?.meta?.fields?.description,
     openGraph: {
-      title: (data?.fields?.meta as { [key: string]: any })?.fields?.title as string,
-      description: (data?.fields?.meta as { [key: string]: any })?.fields?.description as string,
+      title: data?.fields?.meta?.fields?.title,
+      description: data?.fields?.meta?.fields?.description,
       images: [
         {
-          url: `https:${(data?.fields?.meta as { [key: string]: any })?.fields?.image.fields.file.url as string}`,
-          width: (data?.fields?.meta as { [key: string]: any })?.fields?.image.fields.file.details.image.width as string,
-          height: (data?.fields?.meta as { [key: string]: any })?.fields?.image.fields.file.details.image.height as string,
+          url: `https:${data?.fields?.meta?.fields?.image.fields.file.url}`,
+          width: data?.fields?.meta?.fields?.image.fields.file.details.image.width,
+          height: data?.fields?.meta?.fields?.image.fields.file.details.image.height,
         }
       ],
     },
     twitter: {
-      title: (data?.fields?.meta as { [key: string]: any })?.fields?.title as string,
-      description: (data?.fields?.meta as { [key: string]: any })?.fields?.description as string,
-      images: [`https:${(data?.fields?.meta as { [key: string]: any })?.fields?.image.fields.file.url as string}`,]
+      title: data?.fields?.meta?.fields?.title,
+      description: data?.fields?.meta?.fields?.description,
+      images: [`https:${data?.fields?.meta?.fields?.image.fields.file.url}`,]
     },
   }
 }
 
 export default async function Home() {
   const data = await getHomepageData();
-  const videos = (data.fields.videos as any[] || [])?.map((item: any) => ({
+  const videos = data.fields.videos.map((item: any) => ({
     thumbnail: item.fields.thumbnail,
   video: {
     ...item.fields.mp4,
@@ -45,7 +45,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen xl:container p-6 pb-0 xl:px-4 mx-auto">
       <Header>
-        <Image src={`https:${data.fields.logo.fields.file.url as string}`} width={data.fields.logo.fields.file.details.image.width as string} height={data.fields.logo.fields.file.details.image.height as string} alt={data.fields.logo.fields.description as string} className={`${styles.logo} w-72 lg:w-96 touch-none select-none pointer-events-none`} />
+        <Image src={`https:${data.fields.logo.fields.file.url}`} width={data.fields.logo.fields.file.details.image.width} height={data.fields.logo.fields.file.details.image.height} alt={data.fields.logo.fields.description} className={`${styles.logo} w-72 lg:w-96 touch-none select-none pointer-events-none`} />
       </Header>
       <Suspense>
         <Grid variant="HOME" items={videos} />

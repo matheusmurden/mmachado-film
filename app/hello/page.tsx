@@ -6,23 +6,23 @@ import { getHelloData } from '@/utils';
 export async function generateMetadata() {
   const data = await getHelloData();
   return {
-    title: (data?.fields?.meta as { [key: string]: any })?.fields?.title as string,
-    description: (data?.fields?.meta as { [key: string]: any })?.fields?.description as string,
+    title: data?.fields?.meta?.fields?.title,
+    description: data?.fields?.meta?.fields?.description,
     openGraph: {
-      title: (data?.fields?.meta as { [key: string]: any })?.fields?.title as string,
-      description: (data?.fields?.meta as { [key: string]: any })?.fields?.description as string,
+      title: data?.fields?.meta?.fields?.title,
+      description: data?.fields?.meta?.fields?.description,
       images: [
         {
-          url: `https:${(data?.fields?.meta as { [key: string]: any })?.fields?.image.fields.file.url as string}`,
-          width: (data?.fields?.meta as { [key: string]: any })?.fields?.image.fields.file.details.image.width as string,
-          height: (data?.fields?.meta as { [key: string]: any })?.fields?.image.fields.file.details.image.height as string,
+          url: `https:${data?.fields?.meta?.fields?.image.fields.file.url}`,
+          width: data?.fields?.meta?.fields?.image.fields.file.details.image.width,
+          height: data?.fields?.meta?.fields?.image.fields.file.details.image.height,
         }
       ],
     },
     twitter: {
-      title: (data?.fields?.meta as { [key: string]: any })?.fields?.title as string,
-      description: (data?.fields?.meta as { [key: string]: any })?.fields?.description as string,
-      images: [`https:${(data?.fields?.meta as { [key: string]: any })?.fields?.image.fields.file.url as string}`,]
+      title: data?.fields?.meta?.fields?.title,
+      description: data?.fields?.meta?.fields?.description,
+      images: [`https:${data?.fields?.meta?.fields?.image.fields.file.url}`,]
     },
   }
 }
@@ -30,7 +30,7 @@ export async function generateMetadata() {
 export default async function Hello() {
   const data = await getHelloData();
 
-  const emailArr = (data.fields.email as string).split('@');
+  const emailArr = (data.fields.email).split('@');
 
   return (
     <>
@@ -50,7 +50,7 @@ export default async function Hello() {
       />
     </main>
     <div className='translate-y-[-2rem] lg:translate-y-[-5rem] ml-[auto] mr-24 px-10 lg:px-0 w-full lg:w-[20rem] text-white grid grid-rows-2 grid-cols-2 font-bold'>
-      <a className='col-start-2 row-start-1 text-[#C772FF] text-xl hover:text-white uppercase text-right' href={data.fields.instagram as string} target='_blank' rel="noopener">instagram</a>
+      <a className='col-start-2 row-start-1 text-[#C772FF] text-xl hover:text-white uppercase text-right' href={data.fields.instagram} target='_blank' rel="noopener">instagram</a>
       <a className='col-start-1 row-start-2 text-[#FE4E02] text-xl hover:text-white uppercase' href={`mailto:${data.fields.email}`}>
       {emailArr?.[0]}
       <span className='font-sans'>@</span>

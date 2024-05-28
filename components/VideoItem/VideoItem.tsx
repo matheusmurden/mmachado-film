@@ -33,10 +33,6 @@ export interface VideoItemProps {
 				url: string,
 				details: {
 					size: number,
-					video: {
-						width: number,
-						height: number
-					}
 				},
 				fileName: string;
 				contentType: string;
