@@ -34,7 +34,7 @@ export default async function Hello() {
 
   return (
     <>
-    <main className="min-h-[80vh] m-0 xl:w-screen xl:max-w-[100vw] p-6 pb-0 xl:pl-0 xl:pt-0 lg:pr-[15rem] mx-auto flex flex-col-reverse md:flex-row gap-8 xl:gap-16 items-center xl:items-end justify-center lg:justify-between">
+    <main className="min-h-[80vh] m-0 xl:w-screen xl:max-w-[100vw] p-10 px-6 pb-0 xl:pl-0 xl:pt-0 lg:pr-[15rem] mx-auto flex flex-col-reverse md:flex-row gap-8 xl:gap-16 items-center justify-center lg:justify-between">
       <aside className='hidden xl:block w-[20vw]'>
         <Image
           src={sideTexture}
@@ -49,13 +49,14 @@ export default async function Hello() {
         className='h-full touch-none select-none pointer-events-none w-[60%] md:w-[75%] lg:w-[25vw] xl:place-self-center xl:mt-24'
       />
     </main>
-    <div className='translate-y-[-2rem] lg:translate-y-[-3.5rem] ml-[auto] mr-24 px-10 lg:px-0 w-full lg:w-[20rem] text-white grid grid-rows-2 grid-cols-2 font-bold'>
-      <a className='col-start-2 row-start-1 text-[#C772FF] text-xl hover:text-white uppercase text-right' href={data.fields.instagram} target='_blank' rel="noopener">instagram</a>
-      <a className='col-start-1 row-start-2 text-[#FE4E02] text-xl hover:text-white uppercase' href={`mailto:${data.fields.email}`}>
-      {emailArr?.[0]}
-      <span className='font-sans'>@</span>
-      {emailArr?.[1]}
+    <div className='translate-y-[-2rem] lg:translate-y-[-3.5rem] ml-[auto] mr-24 px-6 xl:px-4 w-full text-white flex flex-row items-center justify-center md:justify-end font-bold gap-10'>
+      <a className='text-[#FE4E02] text-lg md:text-xl hover:text-white uppercase' href={`mailto:${data.fields.email}`}>
+        {emailArr?.[0]}
+        <span className='font-sans'>@</span>
+        {emailArr?.[1]}
       </a>
+      <a className='text-[#C772FF] text-lg md:text-xl hover:text-white uppercase text-right' href={data.fields.instagram} target='_blank' rel="noopener">instagram</a>
+
     </div>
     </>
   );
