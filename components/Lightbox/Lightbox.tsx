@@ -47,12 +47,12 @@ export const Lightbox = () => {
 					role="status">
 					<span
 						className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-						>Loading...</span
-					>
+						>Loading...
+					</span>
 					</div>
 				</div>
 				
-				<iframe ref={iframeRef} className={styles.iframe} src={`https://player.vimeo.com/video/${vimeoId}?autoplay=1&byline=0&portrait=0?transparent=1&playsinline=0`} style={{position:"absolute", border: 'none', top:0, left:0, width:'100%', height:'100%', visibility: 'hidden', backgroundColor: 'black' }} frameBorder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+				<iframe ref={iframeRef} className={styles.iframe} src={`https://player.vimeo.com/video/${vimeoId}?autoplay=1&byline=0&portrait=0`} style={{position:"absolute", border: 'none', top:0, left:0, width:'100%', height:'100%', visibility: 'hidden', backgroundColor: 'black' }} frameBorder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
 			</div>
 		</dialog>);
 };
