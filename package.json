@@ -1,6 +1,16 @@
 {
-  "name": "website",
-  "version": "0.1.0",
+  "name": "maria-machado-film-editor",
+  "homepage": "https://maria.film/",
+  "author": {
+    "name": "Matheus Murden",
+    "email": "matheus@murden.dev",
+    "url": "https://murden.dev/"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/matheusmurden/mmachado-film.git"
+  },
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -49,7 +49,7 @@ export default async function Hello() {
         className='h-full touch-none select-none pointer-events-none w-[60%] md:w-[75%] lg:w-[25vw] xl:place-self-center xl:mt-24'
       />
     </main>
-    <div className='translate-y-[-2rem] lg:translate-y-[-5rem] ml-[auto] mr-24 px-10 lg:px-0 w-full lg:w-[20rem] text-white grid grid-rows-2 grid-cols-2 font-bold'>
+    <div className='translate-y-[-2rem] lg:translate-y-[-3.5rem] ml-[auto] mr-24 px-10 lg:px-0 w-full lg:w-[20rem] text-white grid grid-rows-2 grid-cols-2 font-bold'>
       <a className='col-start-2 row-start-1 text-[#C772FF] text-xl hover:text-white uppercase text-right' href={data.fields.instagram} target='_blank' rel="noopener">instagram</a>
       <a className='col-start-1 row-start-2 text-[#FE4E02] text-xl hover:text-white uppercase' href={`mailto:${data.fields.email}`}>
       {emailArr?.[0]}

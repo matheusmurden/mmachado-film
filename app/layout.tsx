@@ -89,9 +89,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      
-      <Script src="https://player.vimeo.com/api/player.js" />
+    <html lang="en">      
         <body className={`${rocGrotesk.className} h-full min-h-screen`}>
           <Navbar />
           {children}
