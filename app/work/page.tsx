@@ -1,8 +1,7 @@
-import { Grid, Header } from "@/components";
+import { Filter, Grid, Header } from "@/components";
 
 import { getWorkData } from '@/utils'
 import uniq from "lodash/uniq";
-import Link from "next/link";
 import { Suspense } from "react";
 
 export async function generateMetadata() {
@@ -48,9 +47,9 @@ export default async function Work() {
   return (
     <main className="xl:container p-6 pb-0 xl:px-4 xl:py-0 mx-auto">
       <Header variant="WORK">
-        {categories.map((category) => (
-          <Link className="leading-tight text-xl md:text-3xl lg:text-3xl mb-0 font-bold" href={`?category=${category.replaceAll(' ', '-')?.toLowerCase()}`} key={category}>{category}</Link>
-        ))}
+        <Suspense>
+          <Filter categories={categories} />
+        </Suspense>
       </Header>
       <Suspense>
         <Grid variant="WORK" items={videos} />

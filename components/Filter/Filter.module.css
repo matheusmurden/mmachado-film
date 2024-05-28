@@ -1,0 +1,7 @@
+.test {
+	content: '|';
+	color: white;
+	font-family: sans-serif;
+	font-weight: light;
+	pointer-events: none;
+}

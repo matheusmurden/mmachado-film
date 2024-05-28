@@ -44,10 +44,42 @@ export async function generateMetadata() {
       card: 'summary_large_image',
       title: 'Maria MMachado | Film Editor',
       description: 'High-end Film Editor from Brazil.',
-      // siteId: '1467726470533754880',
-      // creator: '@nextjs',
-      // creatorId: '1467726470533754880',
     },
+    icon: [
+      {
+        rel: 'icon',
+        url: '/favicon.ico',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '512x512',
+        url: '/favicon-512x512.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '192x192',
+        url: '/favicon-192x192.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        url: '/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        url: '/favicon-16x16.png',
+      },
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        url: '/apple-touch-icon.png',
+      },
+    ]
   }
 }
 
@@ -58,6 +90,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      
       <Script src="https://player.vimeo.com/api/player.js" />
         <body className={`${rocGrotesk.className} h-full min-h-screen`}>
           <Navbar />

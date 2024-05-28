@@ -52,7 +52,8 @@ export interface VideoItemProps {
 
 export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, video, title, subtitle, className, vimeo }: VideoItemProps) => {
 	const ref = useRef<HTMLVideoElement>(null)
-	const url = video.aspectRatio ? `?modal=true&vimeoUrl=${vimeo}&aspectRatio=${video.aspectRatio}` : `?modal=true&vimeoUrl=${vimeo}`
+	const vimeoId = vimeo?.replace('https://vimeo.com/', '');
+	const url = video.aspectRatio ? `?modal=true&vimeoId=${vimeoId}&aspectRatio=${video.aspectRatio}` : `?modal=true&vimeoId=${vimeoId}`
 	return (
 		<Link
 		scroll={false}

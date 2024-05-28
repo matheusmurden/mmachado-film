@@ -2,7 +2,6 @@ import { Grid, Footer, Header } from "@/components";
 import { getHomepageData } from "@/utils";
 import { Suspense } from "react";
 
-import LogoBig from '../public/LogoBig.png';
 import Image from "next/image";
 
 import styles from './page.module.css';
@@ -46,7 +45,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen xl:container p-6 pb-0 xl:px-4 mx-auto">
       <Header>
-        <Image src={LogoBig} alt="Maria Machado Film Editor" className={`${styles.logo} w-72 lg:w-96 touch-none select-none pointer-events-none`} />
+        <Image src={`https:${data.fields.logo.fields.file.url as string}`} width={data.fields.logo.fields.file.details.image.width as string} height={data.fields.logo.fields.file.details.image.height as string} alt={data.fields.logo.fields.description as string} className={`${styles.logo} w-72 lg:w-96 touch-none select-none pointer-events-none`} />
       </Header>
       <Suspense>
         <Grid variant="HOME" items={videos} />
