@@ -8,8 +8,6 @@
   }
   body {
     background-color: #000000;
-  }
-  body, html, .player, .fallback {
-    background: black !important;
+    font-family: "roc-grotesk", sans-serif;
   }
 }

@@ -19,7 +19,7 @@ export const Filter = ({ categories }: FilterProps) => {
 			{categories.map((category, index) => (
 				<Fragment key={category}>
 					<Link className={`${formatCategory(category) === currentCategory ? 'text-[#FE4E02]' : 'text-white'} ${styles.filterOption} hover:text-[#FE4E02] leading-tight text-lg md:text-xl lg:text-2xl mb-0 font-bold`} href={`?category=${formatCategory(category)}`}>{category}</Link>
-					{index !== categories.length -1 && <div className="translate-y-[-10%] md:translate-y-[-25%] text-white pointer-events-none touch-none select-none font-sans">|</div>}
+					{index !== categories.length -1 && <div className="font-bold leading-tight text-lg md:text-xl lg:text-2xl mb-0 text-white pointer-events-none touch-none select-none">|</div>}
 				</Fragment>
 			))}
 		</div>

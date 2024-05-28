@@ -51,9 +51,7 @@ export default async function Hello() {
     </main>
     <div className='translate-y-[-2rem] lg:translate-y-[-3.5rem] ml-[auto] mr-24 px-6 xl:px-4 w-full text-white flex flex-row items-center justify-center md:justify-end font-bold gap-10'>
       <a className='text-[#FE4E02] text-lg md:text-xl hover:text-white uppercase' href={`mailto:${data.fields.email}`}>
-        {emailArr?.[0]}
-        <span className='font-sans'>@</span>
-        {emailArr?.[1]}
+        {data.fields.email}
       </a>
       <a className='text-[#C772FF] text-lg md:text-xl hover:text-white uppercase text-right' href={data.fields.instagram} target='_blank' rel="noopener">instagram</a>
 
