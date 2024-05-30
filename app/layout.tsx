@@ -74,7 +74,7 @@ export default function RootLayout({
   return (
     <html lang="en">
         <Head>
-          <link rel="stylesheet" href="https://use.typekit.net/rer0jrb.css" />
+          <link fetchPriority="high" rel="stylesheet" href="https://use.typekit.net/rer0jrb.css" />
         </Head>      
         <body className={`h-full min-h-screen`}>
           <Navbar />
