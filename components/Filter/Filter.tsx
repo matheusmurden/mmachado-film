@@ -18,8 +18,8 @@ export const Filter = ({ categories }: FilterProps) => {
 		<div className="flex flex-row gap-3 md:gap-5 items-end justify-start">
 			{categories.map((category, index) => (
 				<Fragment key={category}>
-					<Link className={`${formatCategory(category) === currentCategory ? 'text-[#FE4E02]' : 'text-white'} ${styles.filterOption} hover:text-[#FE4E02] leading-tight text-lg md:text-xl lg:text-2xl mb-0 font-bold`} href={`?category=${formatCategory(category)}`}>{category}</Link>
-					{index !== categories.length -1 && <div className="font-bold leading-tight text-lg md:text-xl lg:text-2xl mb-0 text-white pointer-events-none touch-none select-none">|</div>}
+					<Link className={`${formatCategory(category) === currentCategory ? 'text-[#FE4E02]' : 'text-white'} ${styles.filterOption} hover:text-[#FE4E02] leading-tight text-lg md:text-xl lg:text-2xl mb-0 font-semibold`} href={`?category=${formatCategory(category)}`}>{category}</Link>
+					{index !== categories.length -1 && <div className="font-semibold leading-tight text-lg md:text-xl lg:text-2xl mb-0 text-white pointer-events-none touch-none select-none">|</div>}
 				</Fragment>
 			))}
 		</div>

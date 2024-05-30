@@ -6,38 +6,14 @@ import Link from "next/link"
 
 import styles from './VideoItem.module.css';
 import contentfulLoader from "@/utils/ContentfulImageLoader";
+import { Image as ImageType, Video as VideoType } from "@/utils";
 
 export interface VideoItemProps {
 	priority?: boolean;
 	variant?: 'HOME' | 'WORK';
-	thumbnail: {
-		fields: {
-			file: {
-				url: string,
-				details: {
-					size: number,
-					image: {
-						width: number,
-						height: number
-					}
-				},
-				fileName: string;
-				contentType: string;
-			}
-		}
-	};
-	video: {
-		aspectRatio?: string,
-		fields: {
-			file: {
-				url: string,
-				details: {
-					size: number,
-				},
-				fileName: string;
-				contentType: string;
-			}
-		}
+	thumbnail: ImageType;
+	video: VideoType & {
+		aspectRatio?: string
 	};
 	title: string;
 	subtitle: string;
@@ -105,7 +81,7 @@ export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, video
 					id={`${title}-${subtitle}`}
 					>
 					<div className="overflow-hidden flex flex-row justify-start items-center">
-						<span className={`${styles.caption} mt-[auto] text-xl ${variant === 'HOME' ? 'md:text-3xl' : 'md:text-lg'} text-white font-bold uppercase`}>{title}</span>
+						<span className={`${styles.caption} mt-[auto] text-xl ${variant === 'HOME' ? 'md:text-3xl' : 'md:text-lg'} text-white font-semibold uppercase`}>{title}</span>
 					</div>
 					<div className="overflow-hidden flex flex-row justify-start items-center">
 						<span className={`${styles.caption} ${styles.delay} text-lg ${variant === 'HOME' ? 'md:text-2xl text-zinc-400 lg:text-white' : 'md:text-base text-zinc-400'} font-regular uppercase`}>{subtitle}</span>

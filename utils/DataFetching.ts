@@ -1,10 +1,9 @@
 import client from './ContentfulClient';
 
-interface HomePageData {
+export interface Metadata {
 	fields: {
-		logo: {
+		image: {
 			fields: {
-				description: string,
 				file: {
 					url: string,
 					details: {
@@ -16,126 +15,66 @@ interface HomePageData {
 				}
 			}
 		},
-		videos: {
-			fields: {
-				category: string,
-				project: string,
-				brand: string,
-				vimeo: string,
-				aspectRatio: string,
-				mp4: {
-					fields: {
-						file: {
-							url: string,
-							details: {
-								size: number,
-							},
-							fileName: string;
-							contentType: string;
-						}
-					}
-				},
-				thumbnail: {
-					fields: {
-						description: string,
-						file: {
-							url: string,
-							details: {
-								size: number,
-								image: {
-									width: number,
-									height: number
-								}
-							},
-							fileName: string;
-							contentType: string;
-						}
-					}
+		title: string,
+		description: string
+	}
+}
+
+export interface Image {
+	fields: {
+		description: string,
+		file: {
+			url: string,
+			details: {
+				image: {
+					width: number,
+					height: number
 				}
 			}
-		}[],
-		meta: {
-			fields: {
-				image: {
-					fields: {
-						file: {
-							url: string,
-							details: {
-								image: {
-									width: number,
-									height: number
-								}
-							}
-						}
-					}
-				},
-				title: string,
-				description: string
-			}
 		}
+	}
+}
+
+export interface Video {
+	fields: {
+		description?: string;
+		file: {
+			url: string,
+			details: {
+				size: number,
+			},
+			fileName: string;
+			contentType: string;
+		}
+	}
+}
+
+export interface VideoItem {
+	fields: {
+		category: string,
+		project: string,
+		brand: string,
+		vimeo: string,
+		aspectRatio: string,
+		mp4: Video,
+		thumbnail: Image
+	}
+}
+
+interface HomePageData {
+	fields: {
+		videoLogo: Video,
+		logo: Image,
+		videos: VideoItem[],
+		meta: Metadata
 	}
 }
 
 interface WorkPageData {
 	fields: {
 		heading: string,
-		videos: {
-			fields: {
-				category: string,
-				project: string,
-				brand: string,
-				vimeo: string,
-				aspectRatio: string,
-				mp4: {
-					fields: {
-						file: {
-							url: string,
-							details: {
-								size: number,
-							},
-							fileName: string;
-							contentType: string;
-						}
-					}
-				},
-				thumbnail: {
-					fields: {
-						description: string,
-						file: {
-							url: string,
-							details: {
-								size: number,
-								image: {
-									width: number,
-									height: number
-								}
-							},
-							fileName: string;
-							contentType: string;
-						}
-					}
-				}
-			}
-		}[],
-		meta: {
-			fields: {
-				image: {
-					fields: {
-						file: {
-							url: string,
-							details: {
-								image: {
-									width: number,
-									height: number
-								}
-							}
-						}
-					}
-				},
-				title: string,
-				description: string
-			}
-		}
+		videos: VideoItem[],
+		meta: Metadata
 	}
 }
 
@@ -144,25 +83,7 @@ interface HelloPageData {
 		heading: string,
 		instagram: string,
 		email: string,
-		meta: {
-			fields: {
-				image: {
-					fields: {
-						file: {
-							url: string,
-							details: {
-								image: {
-									width: number,
-									height: number
-								}
-							}
-						}
-					}
-				},
-				title: string,
-				description: string
-			}
-		}
+		meta: Metadata
 	}
 }
 
