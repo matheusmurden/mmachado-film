@@ -2,7 +2,6 @@ import "./globals.css";
 import { Lightbox, Navbar } from "@/components";
 import type { Viewport } from 'next'
 import { Suspense } from "react";
-import Head from "next/head";
 
  
 export const viewport: Viewport = {
@@ -72,11 +71,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-        <Head>
-          <link fetchPriority="high" rel="stylesheet" href="https://use.typekit.net/rer0jrb.css" />
-        </Head>      
-        <body className={`h-full min-h-screen`}>
+    <html lang="en">     
+        <body className={`h-full min-h-screen tk-roc-grotesk`}>
           <Navbar />
           {children}
           <Suspense>
