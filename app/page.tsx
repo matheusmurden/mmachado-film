@@ -48,7 +48,6 @@ export default async function Home() {
           <video
             preload="auto"
             src={`https:${data.fields.videoLogo.fields.file.url}`}
-            poster={`https:${data.fields.logo.fields.file.url}`}
             disablePictureInPicture
             disableRemotePlayback
             loop
