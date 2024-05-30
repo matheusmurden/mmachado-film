@@ -1,4 +1,4 @@
-import { Filter, Grid, Header } from "@/components";
+import { Filter, Grid, Header, Navbar } from "@/components";
 
 import { getWorkData } from '@/utils'
 import uniq from "lodash/uniq";
@@ -45,7 +45,8 @@ export default async function Work() {
   const categories = uniq(videos.map((item) => item.category))
 
   return (
-    <main className="xl:container p-6 pb-0 xl:px-4 xl:py-0 mx-auto">
+    <main className="xl:container px-6 pb-0 xl:px-4 pb-0 pt-24 mx-auto relative">
+      <Navbar />
       <Header variant="WORK">
         <Suspense>
           <Filter categories={categories} />

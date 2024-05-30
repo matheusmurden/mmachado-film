@@ -22,16 +22,25 @@ export const Lightbox = () => {
 			const iframe = document.querySelector('iframe')!;
 			const iframePlayer = new Player(iframe);
 
-			iframePlayer.on('loaded', () => {
+			if (iframeRef.current) {
 				iframeRef.current!.style.background='black'
-				iframeRef.current!.style.visibility='visible'
-			})
+				
+				iframePlayer.ready().then(() => {
+					iframePlayer.play();
+					iframeRef.current!.style.visibility='visible'
+					setTimeout(() => {
+						if (loadingRef.current) {
+							loadingRef.current!.style.visibility='hidden'
+						}
+					}, 1500)
+				})
 
-			iframePlayer.on('play', () => {
-				setTimeout(() => {
-					loadingRef.current!.style.visibility='hidden'
-				}, 150)
-			})
+				iframePlayer.on('progress', () => {
+					if (loadingRef.current) {
+						loadingRef.current!.style.visibility='hidden'
+					}
+				});
+			}
 		}
 	}, [modal])
 
@@ -39,9 +48,9 @@ export const Lightbox = () => {
 	const loadingRef = useRef<HTMLDivElement>(null)
 	
 	return modal && (
-		<dialog onClick={() => router.back()} className="animate-fade-in-up fixed z-[999] min-h-screen top-0 left-0 bg-[#00000095] flex flex-row items-center p-0 md:px-10 md:py-0 w-full">
+		<dialog onClick={() => router.back()} className="animate-fade-in-up fixed z-[991] min-h-screen top-0 left-0 bg-[#00000095] flex flex-row items-center p-0 md:px-10 md:py-0 w-full">
 			<div onClick={() => router.back()} className={`${aspectClass} ${styles.lightbox} shadow-2xl rounded overflow-hidden border-none relative max-h-screen h-full overflow-hidden w-full`}>
-				<div ref={loadingRef} className="bg-black absolute top-0 left-0 w-full h-full z-[9999] flex items-center justify-center">
+				<div ref={loadingRef} className="bg-black absolute top-0 left-0 w-full h-full z-[999] flex items-center justify-center">
 				<div
 					className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
 					role="status">
@@ -52,7 +61,7 @@ export const Lightbox = () => {
 					</div>
 				</div>
 				
-				<iframe ref={iframeRef} className={styles.iframe} src={`https://player.vimeo.com/video/${vimeoId}?autoplay=1&byline=0&portrait=0&playsinline=1`} style={{position:"absolute", border: 'none', top:0, left:0, width:'100%', height:'100%', visibility: 'hidden', backgroundColor: 'black' }} frameBorder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+				<iframe ref={iframeRef} className={`${styles.iframe} z-[991]`} src={`https://player.vimeo.com/video/${vimeoId}?byline=0&portrait=0&playsinline=0&loop=1`} style={{position:"absolute", border: 'none', top:0, left:0, width:'100%', height:'100%', visibility: 'hidden', backgroundColor: 'black' }} frameBorder="0" allowFullScreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
 			</div>
 		</dialog>);
 };

@@ -1,4 +1,4 @@
-import { Grid, Footer, Header } from "@/components";
+import { Grid, Footer, Header, Navbar } from "@/components";
 import { getHomepageData } from "@/utils";
 import { Suspense } from "react";
 
@@ -42,7 +42,8 @@ export default async function Home() {
   }));
 
   return (
-    <main className="min-h-screen xl:container p-6 pb-0 xl:px-4 mx-auto">
+    <main className="min-h-screen xl:container px-6 py-0 pt-24 xl:px-4 mx-auto overflow-x-hidden relative">
+      <Navbar className="animate" />
       <Header>
         <figure className="w-[150vw] lg:w-full">
           <video

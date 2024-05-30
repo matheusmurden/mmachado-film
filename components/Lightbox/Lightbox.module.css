@@ -1,11 +1,14 @@
 .iframe {
-	scale: 100.5%;
+	scale: 101%;
 	transform-origin: center center;
 }
 
 @media screen and (min-width:320px) and (max-width:960px) {
 	.lightbox {
 		@apply p-0 mx-auto h-auto;
+	}
+	.iframe {
+		scale: 102.5%;
 	}
 }
 

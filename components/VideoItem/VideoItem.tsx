@@ -79,7 +79,7 @@ export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, video
 						justify-end 
 					`}
 					id={`${title}-${subtitle}`}
-					>
+				>
 					<div className="overflow-hidden flex flex-row justify-start items-center">
 						<span className={`${styles.caption} mt-[auto] text-xl ${variant === 'HOME' ? 'md:text-3xl' : 'md:text-lg'} text-white font-semibold uppercase`}>{title}</span>
 					</div>
