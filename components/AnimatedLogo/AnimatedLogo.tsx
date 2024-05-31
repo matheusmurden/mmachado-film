@@ -12,16 +12,16 @@ export const AnimatedLogo = ({ data }: { data: HomePageData }) => {
 		}
 	}, [])
 	return (
-		<figure className="w-[150vw] lg:w-full">
+		<figure className="w-full">
           <video
-			ref={ref}
+            ref={ref}
             preload="auto"
             src={`https:${data.fields.videoLogo.fields.file.url}`}
             loop
             autoPlay
             muted
             playsInline
-            className="aspect-video w-full overflow-hidden object-cover"
+            className="aspect-video scale-150 lg:scale-100 w-full object-cover"
             aria-describedby="logoVideoLabel"
           >
             Your browser does not support the video tag.

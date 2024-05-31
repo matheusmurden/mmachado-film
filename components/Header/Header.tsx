@@ -7,7 +7,7 @@ interface HeaderProps {
 
 export const Header = ({ variant = 'HOME', children }: HeaderProps) => {
 	return variant === 'HOME' ? (
-		<header className="h-[40vh] xl:h-[60vh] mb-12 text-white uppercase text-center flex flex-col items-center justify-center">
+		<header className="h-[40vh] xl:h-[60vh] mb-12 text-white uppercase text-center flex items-center justify-center">
 			{children}
 		</header>
 	) : (

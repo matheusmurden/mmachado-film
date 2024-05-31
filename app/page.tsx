@@ -10,6 +10,9 @@ export async function generateMetadata() {
     title: data?.fields?.meta?.fields?.title,
     description: data?.fields?.meta?.fields?.description,
     openGraph: {
+      type: 'website',
+      siteName: 'Maria Machado | Film Editor',
+      url: 'https://maria.film',
       title: data?.fields?.meta?.fields?.title,
       description: data?.fields?.meta?.fields?.description,
       images: [
