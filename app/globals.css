@@ -1,3 +1,5 @@
+@import url("https://p.typekit.net/p.css?s=1&k=rer0jrb&ht=tk&f=41077.41078.41097.41098.41108.41109.41110.41111.41112.41079.41081.41082.41086.41088.41090.41091.41095.41099.41102.41113.41116&a=18488934&app=typekit&e=css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -48,8 +50,6 @@
  * © 2009-2024 Adobe Systems Incorporated. All Rights Reserved.
  */
 /*{"last_published":"2024-05-30 14:32:45 UTC"}*/
-
-@import url("https://p.typekit.net/p.css?s=1&k=rer0jrb&ht=tk&f=41077.41078.41097.41098.41108.41109.41110.41111.41112.41079.41081.41082.41086.41088.41090.41091.41095.41099.41102.41113.41116&a=18488934&app=typekit&e=css");
 
 @font-face {
 font-family:"roc-grotesk";

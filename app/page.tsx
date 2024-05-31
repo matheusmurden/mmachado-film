@@ -17,7 +17,7 @@ export async function generateMetadata() {
       description: data?.fields?.meta?.fields?.description,
       images: [
         {
-          url: `https:${data?.fields?.meta?.fields?.image.fields.file.url}`,
+          url: `https:${data?.fields?.meta?.fields?.image.fields.file.url}?fm=webp&q=80`,
           width: data?.fields?.meta?.fields?.image.fields.file.details.image.width,
           height: data?.fields?.meta?.fields?.image.fields.file.details.image.height,
         }
@@ -26,7 +26,7 @@ export async function generateMetadata() {
     twitter: {
       title: data?.fields?.meta?.fields?.title,
       description: data?.fields?.meta?.fields?.description,
-      images: [`https:${data?.fields?.meta?.fields?.image.fields.file.url}`,]
+      images: [`https:${data?.fields?.meta?.fields?.image.fields.file.url}?fm=webp&q=80`,]
     },
   }
 }
