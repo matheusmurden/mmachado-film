@@ -72,7 +72,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">     
-        <body className={`h-full min-h-screen tk-roc-grotesk`}>
+        <body className={`h-full tk-roc-grotesk`}>
           {children}
           <Suspense>
             <Lightbox />

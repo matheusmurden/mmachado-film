@@ -2,7 +2,7 @@ import { Grid, Footer, Header, Navbar } from "@/components";
 import { getHomepageData } from "@/utils";
 import { Suspense } from "react";
 
-import Image from "next/image";
+import { AnimatedLogo } from "@/components";
 
 export async function generateMetadata() {
   const data = await getHomepageData();
@@ -45,29 +45,9 @@ export default async function Home() {
     <main className="min-h-screen xl:container px-6 py-0 pt-24 xl:px-4 mx-auto overflow-x-hidden relative">
       <Navbar className="animate" />
       <Header>
-        <figure className="w-[150vw] lg:w-full">
-          <video
-            preload="auto"
-            src={`https:${data.fields.videoLogo.fields.file.url}`}
-            disablePictureInPicture
-            disableRemotePlayback
-            loop
-            autoPlay
-            muted
-            playsInline
-            className="aspect-video w-full overflow-hidden object-cover"
-            aria-describedby="logoVideoLabel"
-          >
-            <Image src={`https:${data.fields.logo.fields.file.url}`} width={data.fields.logo.fields.file.details.image.width} height={data.fields.logo.fields.file.details.image.height} alt={data.fields.logo.fields.description} className="touch-none select-none pointer-events-none aspect-video w-full object-cover" />
-            Your browser does not support the video tag.
-          </video>
-          <figcaption
-            id="logoVideoLabel"
-            className="invisible h-0 touch-none select-none pointer-events-none"
-          >
-            {data.fields.videoLogo.fields.description}
-          </figcaption>
-        </figure>
+        <Suspense>
+          <AnimatedLogo data={data} />
+        </Suspense>
       </Header>
       <Suspense>
         <Grid variant="HOME" items={videos} />

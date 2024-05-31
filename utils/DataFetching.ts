@@ -61,7 +61,7 @@ export interface VideoItem {
 	}
 }
 
-interface HomePageData {
+export interface HomePageData {
 	fields: {
 		videoLogo: Video,
 		logo: Image,
