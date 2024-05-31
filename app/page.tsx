@@ -48,9 +48,7 @@ export default async function Home() {
     <main className="min-h-screen xl:container px-6 py-0 pt-24 xl:px-4 mx-auto overflow-x-hidden relative">
       <Navbar className="animate" />
       <Header>
-        <Suspense>
-          <AnimatedLogo data={data} />
-        </Suspense>
+        <AnimatedLogo data={data} />
       </Header>
       <Suspense>
         <Grid variant="HOME" items={videos} />
