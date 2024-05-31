@@ -1,7 +1,8 @@
 import "./globals.css";
-import { Lightbox, Navbar } from "@/components";
+import { Lightbox } from "@/components";
 import type { Viewport } from 'next'
 import { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/react"
 
  
 export const viewport: Viewport = {
@@ -77,6 +78,7 @@ export default function RootLayout({
           <Suspense>
             <Lightbox />
           </Suspense>
+          <Analytics />
         </body>
     </html>
   );

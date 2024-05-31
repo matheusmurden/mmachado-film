@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from "next/link"
 
 import styles from './VideoItem.module.css';
-import contentfulLoader from "@/utils/ContentfulImageLoader";
 import { Image as ImageType, Video as VideoType } from "@/utils";
 
 export interface VideoItemProps {
@@ -25,21 +24,22 @@ export interface VideoItemProps {
 export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, video, title, subtitle, className, vimeo }: VideoItemProps) => {
 	const ref = useRef<HTMLVideoElement>(null)
 	const vimeoId = vimeo?.replace('https://vimeo.com/', '');
-	const url = video.aspectRatio ? `?modal=true&vimeoId=${vimeoId}&aspectRatio=${video.aspectRatio}` : `?modal=true&vimeoId=${vimeoId}`
+	const linkTo = video.aspectRatio ? `?modal=true&vimeoId=${vimeoId}&aspectRatio=${video.aspectRatio}` : `?modal=true&vimeoId=${vimeoId}`
+	const thumbnailUrl = `https:${thumbnail.fields.file.url}?fm=webp&q=75`
+
 	return (
 		<Link
 		scroll={false}
 		className={`${styles.figure} ${variant === 'HOME' ? '' : styles.work} relative mt-4 md:mt-0 h-full rounded-lg hover:cursor-pointer shadow-lg hover:shadow-2xl transition ease-in-out w-full ${className}`}
-		href={url}>
+		href={linkTo}>
 			<figure
 				onMouseLeave={() => ref.current && ref.current.pause()}
 				onMouseOver={() => ref.current && ref.current.play() }
 				aria-describedby={`${title}-${subtitle}`}
 			>
 				<Image
-					loader={(props) => contentfulLoader(props)}
 					className={`${styles.thumbnail} ${styles.videoOutline} absolute rounded-lg aspect-video top-0 left-0 object-cover`}
-					src={thumbnail.fields.file.url}
+					src={thumbnailUrl}
 					width={thumbnail.fields.file.details.image.width}
 					height={thumbnail.fields.file.details.image.height}
 					alt={`"${title} ${subtitle}" video thumbnail.`}
@@ -52,7 +52,7 @@ export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, video
 					muted
 					playsInline
 					className={`rounded-lg aspect-video w-full overflow-hidden object-cover ${styles.videoOutline}`}
-					poster={`https:${thumbnail.fields.file.url}`}
+					poster={thumbnailUrl}
 					src={`https:${video.fields.file.url}`}
 					disablePictureInPicture
 					disableRemotePlayback
