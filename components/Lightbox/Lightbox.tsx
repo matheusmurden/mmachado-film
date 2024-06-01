@@ -6,6 +6,7 @@ import styles from './Lightbox.module.css';
 import { useEffect, useRef } from "react";
 
 import Player from '@vimeo/player';
+import { track } from '@vercel/analytics';
 
 export const Lightbox = () => {
 	const searchParams = useSearchParams()!;
@@ -41,8 +42,9 @@ export const Lightbox = () => {
 					}
 				});
 			}
+			track('Watched Video', { video: `https://vimeo.com/${vimeoId}`});
 		}
-	}, [modal])
+	}, [modal, vimeoId])
 
 	const iframeRef = useRef<HTMLIFrameElement>(null)
 	const loadingRef = useRef<HTMLDivElement>(null)

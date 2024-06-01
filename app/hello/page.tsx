@@ -2,7 +2,8 @@ import sideTexture from '/public/sideTexture.jpg';
 import profilePic from '/public/profilePic.jpg';
 import Image from 'next/image';
 import { getHelloData } from '@/utils';
-import { Navbar } from '@/components';
+import { ContactSection, Navbar } from '@/components';
+import { Suspense } from 'react';
 
 export async function generateMetadata() {
   const data = await getHelloData();
@@ -49,12 +50,9 @@ export default async function Hello() {
           </aside>
           <div className='w-full h-full lg:w-[60vw] uppercase flex flex-col items-center justify-center md:items-start gap-12 grid-flow-row h-auto h-auto lg:h-[75vh] xl:h-[85vh]'>
             <h1 className="text-balance text-white text-lg md:text-2xl text-center md:text-left">Maria is a Brazilian based film editor. <br className="hidden lg:block" />She works with commercials, films, <br className="hidden lg:block"  />and music videos.</h1>
-            <div className='w-full flex flex-row gap-8 font-semibold justify-center md:justify-start'>
-              <a className='text-[#FE4E02] text-base md:text-xl hover:text-white uppercase' href={`mailto:${data.fields.email}`}>
-                {data.fields.email}
-              </a>
-              <a className='text-[#C772FF] text-base md:text-xl hover:text-white uppercase' href={data.fields.instagram} target='_blank' rel="noopener">instagram</a>
-            </div>
+            <Suspense>
+              <ContactSection data={data} />
+            </Suspense>
           </div>
           <Image
             src={profilePic}

@@ -6,3 +6,4 @@ export * from './Footer';
 export * from './Lightbox';
 export * from './Filter';
 export * from './AnimatedLogo';
+export * from './ContactSection';

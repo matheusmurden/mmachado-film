@@ -70,7 +70,7 @@ export interface HomePageData {
 	}
 }
 
-interface WorkPageData {
+export interface WorkPageData {
 	fields: {
 		heading: string,
 		videos: VideoItem[],
@@ -78,7 +78,7 @@ interface WorkPageData {
 	}
 }
 
-interface HelloPageData {
+export interface HelloPageData {
 	fields: {
 		heading: string,
 		instagram: string,
