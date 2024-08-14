@@ -25,7 +25,7 @@ export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, video
 	const ref = useRef<HTMLVideoElement>(null)
 	const vimeoId = vimeo?.replace('https://vimeo.com/', '');
 	const linkTo = video.aspectRatio ? `?modal=true&vimeoId=${vimeoId}&aspectRatio=${video.aspectRatio}` : `?modal=true&vimeoId=${vimeoId}`
-	const thumbnailUrl = `https:${thumbnail.fields.file.url}?fm=webp&q=75`
+	const thumbnailUrl = `https:${thumbnail.fields.file.url}?fm=webp`
 
 	return (
 		<Link
@@ -39,20 +39,19 @@ export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, video
 			>
 				<Image
 					className={`${styles.thumbnail} ${styles.videoOutline} absolute rounded-lg aspect-video top-0 left-0 object-cover`}
-					src={thumbnailUrl}
-					width={thumbnail.fields.file.details.image.width}
-					height={thumbnail.fields.file.details.image.height}
+					src={priority ? `${thumbnailUrl}&q=70&w=1280&h=720` : `${thumbnailUrl}&q=60&w=640&h=360`}
+					width={priority ? 1280 : 640}
+					height={priority ? 720 : 480}
 					alt={`"${title} ${subtitle}" video thumbnail.`}
 					priority={priority}
 				/>
 				<video
 					ref={ref}
-					preload={priority ? 'auto' : 'metadata'}
+					preload="metadata"
 					loop
 					muted
 					playsInline
 					className={`rounded-lg aspect-video w-full overflow-hidden object-cover ${styles.videoOutline}`}
-					poster={thumbnailUrl}
 					src={`https:${video.fields.file.url}`}
 					disablePictureInPicture
 					disableRemotePlayback
