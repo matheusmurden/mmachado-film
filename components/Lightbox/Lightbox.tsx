@@ -3,7 +3,7 @@
 import {useSearchParams, useRouter} from "next/navigation";
 
 import styles from './Lightbox.module.css';
-import { useCallback, useEffect, useRef } from "react";
+import { CSSProperties, useCallback, useEffect, useRef } from "react";
 
 import Player from '@vimeo/player';
 import { track } from '@vercel/analytics';
@@ -14,7 +14,7 @@ export const Lightbox = () => {
 	const vimeoId = searchParams.get("vimeoId")
 	const aspectRatio = searchParams.get("aspectRatio");
 
-	const aspectClass = aspectRatio === '4/3' ? "aspect-[4/3] max-w-[900px] mx-auto" : aspectRatio === '800/557' ? 'aspect-[800/557] max-w-[900px] mx-auto' : 'aspect-video'
+	const aspectClass = aspectRatio !== '16/9' ? "max-w-[80vw] mx-auto" : ''
 
 	const router = useRouter();
 
@@ -63,7 +63,7 @@ export const Lightbox = () => {
 	
 	return modal && (
 		<dialog onClick={() => navigateBack()} className="animate-fade-in-up fixed z-[991] min-h-screen top-0 left-0 bg-[#00000095] flex flex-row items-center p-0 md:px-10 md:py-0 w-full">
-			<div onClick={() => navigateBack()} className={`${aspectClass} ${styles.lightbox} shadow-2xl rounded overflow-hidden border-none relative max-h-screen h-full overflow-hidden w-full`}>
+			<div onClick={() => navigateBack()} style={{ aspectRatio: aspectRatio } as CSSProperties} className={`${aspectClass} ${styles.lightbox} shadow-2xl rounded overflow-hidden border-none relative max-h-screen h-full overflow-hidden w-full`}>
 				<div ref={loadingRef} className="bg-black absolute top-0 left-0 w-full h-full z-[999] flex items-center justify-center">
 				<div
 					className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
