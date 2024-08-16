@@ -42,10 +42,11 @@ export default async function Work() {
     title: item.fields.brand,
     subtitle: item.fields.project,
     vimeo: item.fields.vimeo,
-    category: item.fields.category
+    category: item.fields.category,
+    categories: item.fields.categories
   }))
 
-  const categories = uniq(videos.map((item) => item.category))
+  const categories = uniq(videos.flatMap((item) => item.categories.map(category => category.fields?.title)))?.toSorted()
 
   return (
     <main className="xl:container px-6 pb-0 xl:px-4 pb-0 pt-24 mx-auto relative">

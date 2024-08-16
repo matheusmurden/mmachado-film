@@ -49,9 +49,16 @@ export interface Video {
 	}
 }
 
+export interface VideoCategory {
+	fields: {
+		title: string;
+	}
+} 
+
 export interface VideoItem {
 	fields: {
 		category: string,
+		categories: VideoCategory[],
 		project: string,
 		brand: string,
 		vimeo: string,
@@ -88,12 +95,12 @@ export interface HelloPageData {
 }
 
 export async function getHomepageData() {
-	const response = await client.getEntries({ content_type: 'homepage' })
+	const response = await client.getEntries({ content_type: 'homepage', limit: 1, include: 10 })
 	return response.items?.[0] as unknown as HomePageData;
 };
 
 export async function getWorkData() {
-	const response = await client.getEntries({ content_type: 'work' })
+	const response = await client.getEntries({ content_type: 'work', limit: 1, include: 10 })
 	return response.items?.[0] as unknown as WorkPageData;
 };
 

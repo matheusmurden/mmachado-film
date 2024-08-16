@@ -33,7 +33,7 @@ export async function generateMetadata() {
 
 export default async function Home() {
   const data = await getHomepageData();
-  const videos = data.fields.videos.map((item: any) => ({
+  const videos = data.fields.videos.map((item) => ({
     thumbnail: item.fields.thumbnail,
     video: {
       ...item.fields.mp4,
@@ -41,7 +41,8 @@ export default async function Home() {
     },
     title: item.fields.brand,
     subtitle: item.fields.project,
-    vimeo: item.fields.vimeo
+    vimeo: item.fields.vimeo,
+    categories: item.fields.categories
   }));
 
   return (

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from "next/link"
 
 import styles from './VideoItem.module.css';
-import { Image as ImageType, Video as VideoType } from "@/utils";
+import { Image as ImageType, VideoCategory, Video as VideoType } from "@/utils";
 
 export interface VideoItemProps {
 	priority?: boolean;
@@ -19,6 +19,7 @@ export interface VideoItemProps {
 	className?: string;
 	vimeo?: string;
 	category?: string;
+	categories: VideoCategory[]
 }
 
 export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, video, title, subtitle, className, vimeo }: VideoItemProps) => {
@@ -47,7 +48,8 @@ export const VideoItem = ({ variant = 'HOME', priority = false, thumbnail, video
 				/>
 				<video
 					ref={ref}
-					preload="metadata"
+					preload={priority ? 'auto' : 'metadata'}
+					poster={priority ? `${thumbnailUrl}&q=70&w=1280&h=720` : `${thumbnailUrl}&q=60&w=640&h=360`}
 					loop
 					muted
 					playsInline
