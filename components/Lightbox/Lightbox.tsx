@@ -60,10 +60,21 @@ export const Lightbox = () => {
 			router.replace(window.location.pathname);
 		 }
 	}, [router])
+
+	const keyboardEventListener = useCallback((event: KeyboardEvent) => {
+		return event.key === 'Escape' ? navigateBack() : null
+	}, [navigateBack])
+
+	useEffect(() => {
+		document.addEventListener('keypress', keyboardEventListener)
+		return () => {
+			document.removeEventListener('keypress', keyboardEventListener)
+		}
+	}, [keyboardEventListener])
 	
 	return modal && (
 		<dialog onClick={() => navigateBack()} className="animate-fade-in-up fixed z-[991] min-h-screen top-0 left-0 bg-[#00000095] flex flex-row items-center p-0 md:px-10 md:py-0 w-full">
-			<div onClick={() => navigateBack()} style={{ aspectRatio: aspectRatio } as CSSProperties} className={`${aspectClass} ${styles.lightbox} shadow-2xl rounded overflow-hidden border-none relative max-h-screen h-full overflow-hidden w-full`}>
+			<div onClick={() => navigateBack()} style={{ aspectRatio: aspectRatio || 16/9 } as CSSProperties} className={`${aspectClass} ${styles.lightbox} shadow-2xl rounded overflow-hidden border-none relative max-h-screen h-full overflow-hidden w-full`}>
 				<div ref={loadingRef} className="bg-black absolute top-0 left-0 w-full h-full z-[999] flex items-center justify-center">
 				<div
 					className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
