@@ -62,13 +62,13 @@ export const Lightbox = () => {
 	}, [router])
 
 	const keyboardEventListener = useCallback((event: KeyboardEvent) => {
-		return event.key === 'Escape' ? navigateBack() : null
+		event.key === 'Escape' ? navigateBack() : null
 	}, [navigateBack])
 
 	useEffect(() => {
-		document.addEventListener('keypress', keyboardEventListener)
+		document.addEventListener('keydown', keyboardEventListener)
 		return () => {
-			document.removeEventListener('keypress', keyboardEventListener)
+			document.removeEventListener('keydown', keyboardEventListener)
 		}
 	}, [keyboardEventListener])
 	
